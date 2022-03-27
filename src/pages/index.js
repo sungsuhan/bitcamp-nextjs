@@ -1,18 +1,21 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import styled from 'styled-components'
 
 import React,{useState} from "react"
 export default function Home() {
   const [count, setCount] = useState(0)
 
   return (
-    <div>
-    <button onClick={() => setCount(count-1)}>-</button>
-    <button onClick={() => setCount(count+1)}>+</button>
+    <HomeDiv>
+    <button onClick={() => setCount(count - 1)}>-</button><br/>
+    <button onClick={() => setCount(count + 1)}>+</button> <br/>
     <div>{count}</div>
-    </div>
+    </HomeDiv>
   )
 }
+
+const HomeDiv = styled.div`
+  width: '200px'
+  margin: 0 auto
+`
 
 
