@@ -1,7 +1,8 @@
 import AppLayout from "../components/AppLayout";
 
 function MyApp({ Component }) {
-  return <><AppLayout />
+  return <>
+  <AppLayout />
   <Component />
   </>
 }

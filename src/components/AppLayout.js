@@ -23,6 +23,11 @@ const AppLayout = () => {
           <h2>성적표</h2>
         </a>
       </Link>
+      <Link href="/login">
+        <a>
+          <h2>로그인</h2>
+        </a>
+      </Link>
       
     </>
   );
