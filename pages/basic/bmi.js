@@ -1,31 +1,39 @@
-import React,{useState} from "react"
+import React, { useState } from 'react';
+export default function Bmi() {
 
-export default function Bmi(){
-    const [name, setName] = useState("");
-    const [height, setHeight] = useState(0);
-    const [weight, setWeight] = useState(0);
-    const execute = () => {
-        let name = document.getElementById('name').value
-        console.log('이름 : ' + name)
-        let height = document.getElementById('height').value
-        console.log('키 : ' + height)
-        let weight = document.getElementById('weight').value
-        console.log('몸무게 : ' + weight)
-        setName(name)
-        setHeight(height)    
-        setWeight(weight)
+    const [inputs, setInputs] = useState({})
+    const { name, height, weight } = inputs
+    const [result, setResult] = useState(``)
+
+    const onChange = (e) => {
+        e.preventDefault()
+        const { value, name } = e.target
+        setInputs({ ...inputs, [name]: value })
     }
-    return <>
-    <h1>BMI 측정기</h1>
-    <div>
-    <label><b>Username</b></label><br/>
-    <input id="name"/><br/>
-    <label><b>height(cm)</b></label><br/>
-    <input id="height"/><br/>
-    <label><b>weight(kg)</b></label><br/>
-    <input id="weight"/><br/>
-    <button onClick={() => {execute()}}>BMI 측정</button>
-    <div>결과: {name}, {height}cm, {weight}kg</div>
-    </div>
-    </>
+
+    const onClick = async (e) => {
+        e.preventDefault()
+        setResult(`${name}님의 bmi 지수는 ${(weight *10000/height/height).toFixed(2)}입니다.`)
+    }
+    return (<div>
+        <form action="">
+            <h1>BMI</h1>
+            <div>
+                <label htmlFor="">이름</label>
+                <input type="text" name="name" onChange={onChange} /><br />
+
+                <label htmlFor="">키</label>
+                <input type="text" name="height" onChange={onChange} /><br />
+
+                <label htmlFor="">몸무게</label>
+                <input type="text" name="weight" onChange={onChange} /><br />
+
+                <div>이름 : {inputs[`name`]} 키 : {inputs[`height`]} 몸무게 : {inputs[`weight`]} </div>
+
+                <input type="button" onClick={onClick} value="BMI 체크" /><br />
+
+            </div>
+        </form>
+        <div> 결과 : {result}</div>
+    </div>)
 }
