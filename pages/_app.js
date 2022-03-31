@@ -1,6 +1,6 @@
-import {Layout} from "../components/index";
+import {Layout} from "common";
 
-function MyApp({ Component, pageProps}) {
+function MyApp({ Component, pageProps }) {
   return (
     <Layout>
       <Component {...pageProps} />
