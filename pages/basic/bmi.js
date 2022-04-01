@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
+
 export default function Bmi() {
 
-    const [inputs, setInputs] = useState({})
-    const { name, height, weight } = inputs
-    const [result, setResult] = useState(``)
+const [inputs, setInputs] = useState({})
+const { name, height, weight } = inputs
 
-    const onChange = (e) => {
-        e.preventDefault()
-        const { value, name } = e.target
-        setInputs({ ...inputs, [name]: value })
-    }
+const onChange = e => {
+    e.preventDefault()
+    const { value, name } = e.target
+    setInputs({ ...inputs, [name]: value })
+}
 
-    const onClick = async (e) => {
-        e.preventDefault()
-        setResult(`${name}님의 bmi 지수는 ${(weight *10000/height/height).toFixed(2)}입니다.`)
-    }
+const onClick = e => {
+    e.preventDefault()
+        const res = {name, height, weight}
+        alert( `데이터셋 출력 :  ${ JSON.stringify(res) }` )
+}
+
     return (<div>
         <form action="">
             <h1>BMI</h1>
@@ -34,6 +36,5 @@ export default function Bmi() {
 
             </div>
         </form>
-        <div> 결과 : {result}</div>
     </div>)
 }

@@ -9,6 +9,7 @@ export default function Nav(){
         <li className={styles.li}> <Link href='/admin/dashboard'>DashBoard</Link> </li>
         <li className={styles.li}> <Link href='/basic/Nav'>Basic</Link> </li>
         <li className={styles.li}> <Link href='/board/board-list'>BoardList</Link> </li>
+        <li className={styles.li}> <Link href='/board/board-form'>BoardForm</Link> </li>
         <li className={styles.li}> <Link href='/game/game-list'>GameList</Link> </li>
         <li className={styles.li}> <Link href='/game/team-list'>TeamList</Link> </li>
         <li className={styles.li}> <Link href='/todo/todo-list'>TodoList</Link> </li>

@@ -1,31 +1,35 @@
 import React,{useState} from "react"
 
 export default function SignIn(){
-    const [name, setName] = useState("");
-    const [pw, setPw] = useState(0);
-    const login = () => {
-        let name = document.getElementById('name').value
-        console.log('이름 : ' + name)
-        let pw = document.getElementById('pw').value
-        console.log('비번 : ' + pw)
-        setName(name)
-        setPw(pw)
-     }
+    const [inputs, setInputs] = useState({})
+    const { name, pw } = inputs
+
+    const onChange = e => {
+        e.preventDefault()
+        const { value, name } = e.target
+        setInputs({ ...inputs, [name]: value })
+    }
+
+    const onClick = e => {
+        e.preventDefault()
+        const res = {name, pw}
+        alert( `데이터셋 출력 :  ${ JSON.stringify(res) }` )
+    }
+
      return <>
      <h1>로그인</h1>
      <div>
-     <label><b>Username</b></label><br/>
-     <input id="name"/><br/>
-     <label><b>Password</b></label><br/>
-     <input id="pw"/><br/>
-     <button onClick={() => {login()}}>Login</button><br/>
-     <label><input type = "checkbox"/>Remember me</label>
+        <label><b>Username</b></label><br/>
+            <input type="text" onChange={onChange} name="name" /><br/>
+        <label><b>Password</b></label><br/>
+            <input type="text" onChange={onChange} name="pw" /><br/>
+        <input type="button" onClick={onClick} value="로그인" /><br />
+        <label><input type = "checkbox"/>Remember me</label>
      </div>
      <div>
-     <button>Cancel</button>
+        <button>Cancel</button>
      <span>Forgot <a>password?</a></span>
      </div>
-     <div>{name}님 비밀번호 {pw} 맞습니다</div>
      </>
   } 
 
