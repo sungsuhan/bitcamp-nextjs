@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 export default function Bmi() {
 
 const [inputs, setInputs] = useState({})
-const { name, height, weight } = inputs
 
 const onChange = e => {
     e.preventDefault()
@@ -13,8 +12,7 @@ const onChange = e => {
 
 const onClick = e => {
     e.preventDefault()
-        const res = {name, height, weight}
-        alert( `데이터셋 출력 :  ${ JSON.stringify(res) }` )
+    alert( `데이터셋 출력 :  ${ JSON.stringify(inputs) }` )
 }
 
     return (<div>

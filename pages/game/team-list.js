@@ -3,7 +3,6 @@ import style from "game/style/game-list.module.css"
 
 export default function TeamList(){
     const [inputs, setInputs] = useState({})
-    const {teamId, teamRegion, teamName, orgYyyy, stadiumName, address, tel} = inputs
 
     const handleChange = e => {
         e.preventDefault()
@@ -13,8 +12,7 @@ export default function TeamList(){
 
     const handleSubmit = e => {
         e.preventDefault()
-        const res = {teamId, teamRegion, teamName, orgYyyy, stadiumName, address, tel}
-        alert( `등록할 팀 정보 : ${ JSON.stringify(res) }` )
+        alert( `등록할 팀 정보 : ${ JSON.stringify(inputs) }` )
     }
 
     return (<>

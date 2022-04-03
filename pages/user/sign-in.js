@@ -2,7 +2,6 @@ import React,{useState} from "react"
 
 export default function SignIn(){
     const [inputs, setInputs] = useState({})
-    const { name, pw } = inputs
 
     const onChange = e => {
         e.preventDefault()
@@ -12,8 +11,7 @@ export default function SignIn(){
 
     const onClick = e => {
         e.preventDefault()
-        const res = {name, pw}
-        alert( `데이터셋 출력 :  ${ JSON.stringify(res) }` )
+        alert( `데이터셋 출력 :  ${ JSON.stringify(inputs) }` )
     }
 
      return <>
