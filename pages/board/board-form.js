@@ -1,5 +1,6 @@
 import React,{useState} from "react"
 import style from "board/style/board-form.module.css"
+import axios from "axios"
 
 export default function BoardForm(){
     const [inputs, setInputs] = useState({})
@@ -13,6 +14,11 @@ export default function BoardForm(){
     const handleSubmit = e => {
         e.preventDefault()
         alert( `등록할 게시글 :  ${ JSON.stringify(inputs) }` )
+        axios.post("http://localhost:5000/api/board/write", inputs)
+        .then(res => {
+            alert(JSON.stringify(res.data))
+        })
+        .catch(err => alert(err))
     }
 
     return (<>
