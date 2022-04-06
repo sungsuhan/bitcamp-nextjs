@@ -12,8 +12,10 @@ export default function Bmi() {
 
     const handleSubmit = e => {
         e.preventDefault()
+        alert( `등록할 게시글 :  ${ JSON.stringify(inputs) }` )
         axios.post("http://localhost:5000/api/basic/bmi", inputs)
         .then(res => {
+            alert(`결과: ${res.data.result}`)
             const result = res.data
             document.getElementById('result-span').innerHTML =
             `<h3>이름 : ${result.name}</h3>
@@ -40,6 +42,6 @@ export default function Bmi() {
                 <input type="submit" value="BMI 체크" /><br />
             </div>
         </form>
-        <div> 결과 : <span id="result-span"></span></div>
+        <div> 결과 : <span id='result-span'></span></div>
     </div>)
 }

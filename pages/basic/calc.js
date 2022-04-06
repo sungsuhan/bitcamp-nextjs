@@ -13,12 +13,14 @@ export default function Calc() {
 
     const handleSubmit = e => {
         e.preventDefault()
+        alert( `등록할 게시글 :  ${ JSON.stringify(inputs) }` )
         axios.post("http://localhost:5000/api/basic/calc", inputs)
         .then(res => {
+            alert(`결과: ${res.data.result}`)
             const result = res.data
             document.getElementById('result-span').innerHTML =
             `<h3>${result.num1} ${result.opcode} ${result.num2} = ${result.res}</h3>`
-    })
+        })
         .catch(err => alert(err))
     }
 
@@ -43,7 +45,7 @@ return (<div>
 
         <input type="submit" value="계산" /><br />
     </form>
-    <div> 계산 결과 : <span id="result-span"></span></div>
+    <div> 계산 결과 : <span id='result-span'></span></div>
 </div>
 )
 }
