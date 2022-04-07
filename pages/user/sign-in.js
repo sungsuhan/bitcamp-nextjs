@@ -12,13 +12,10 @@ export default function SignIn(){
 
     const handleSubmit = e => {
         e.preventDefault()
-        alert( `등록할 게시글 :  ${ JSON.stringify(inputs) }` )
-        axios.post("http://localhost:5000/api/user/signIn", inputs)
+        alert( `등록할 로그인 정보 :  ${ JSON.stringify(inputs) }` )
+        axios.post("http://localhost:5000/api/user/sign-in", inputs)
         .then(res => {
             alert(`결과: ${res.data.result}`)
-            const result = res.data
-            document.getElementById('result-span').innerHTML =
-            `<h3>${result.name}님 로그인 성공<h3>`
         })
         .catch(err => alert(err))
     }
@@ -37,7 +34,6 @@ export default function SignIn(){
      <span>Forgot <a>password?</a></span>
      </div>
      </form>
-     <div><span id='result-span'></span></div>
      </>
   } 
 

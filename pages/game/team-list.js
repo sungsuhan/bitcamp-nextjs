@@ -1,5 +1,6 @@
 import React,{useState} from "react"
-import style from "game/style/game-list.module.css"
+import axios from "axios"
+import style from "game/style/team-list.module.css"
 
 export default function TeamList(){
     const [inputs, setInputs] = useState({})
@@ -13,11 +14,16 @@ export default function TeamList(){
     const handleSubmit = e => {
         e.preventDefault()
         alert( `등록할 팀 정보 : ${ JSON.stringify(inputs) }` )
+        axios.post("http://localhost:5000/api/game/team-list", inputs)
+        .then(res => {
+            alert(`결과: ${res.data.result}`)
+        })
+        .catch(err => alert(err))
     }
 
     return (<>
         <div className={style.container}>
-            <form action="">
+            <form action="" onSubmit={handleSubmit}>
             <div className={style.row}>
                 <div className={style.col25}>
                     <label className={style.label} htmlFor="teamId">팀 ID</label>
@@ -76,7 +82,7 @@ export default function TeamList(){
             </div>
             <br/>
             <div className={style.row}>
-                <input type="submit" onClick={handleSubmit} className={style.inputSubmit}
+                <input type="submit" className={style.inputSubmit}
                 value="Submit"/>
             </div>
             </form>
