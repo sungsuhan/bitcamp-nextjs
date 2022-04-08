@@ -1,20 +1,30 @@
+import axios from "axios"
+import { useEffect,useState } from "react"
 import tableStyles from "../common/style/table.module.css"
 
 const Table = ({ columns, colspan, data }) => {
+
     return (
     <table className={tableStyles.table}>
         <thead>
             <tr className={tableStyles.tr}>
                 {columns.map((column) => (
-                    <th key={column.userId} className={tableStyles.td}>{column}</th>
+                    <th key={column} className={tableStyles.td}>{column}</th>
                 ))}
             </tr>
         </thead>
         <tbody>
-            <tr className={tableStyles.tr}>
-                {data.length == 0 ? <td colSpan={colspan} className={tableStyles.td}>데이터가 없습니다</td>
-                :<td colSpan={colspan} className={tableStyles.td}>데이터가 있습니다</td>}
+            { data.length == 0  ?<tr className={tableStyles.tr}>
+                                <td colSpan={colspan} className={tableStyles.td}>데이터가 없습니다</td>
+                                </tr>
+            :data.map((user) => (
+            <tr className={tableStyles.tr}  key={user.userId} >
+                <td className={tableStyles.td}>{user.userId}</td>
+                <td className={tableStyles.td}>{user.pw}</td>
+                <td className={tableStyles.td}>{user.name}</td>
+                <td className={tableStyles.td}>{user.tel}</td>
             </tr>
+            ))}
         </tbody>
     </table>
     )
@@ -22,8 +32,17 @@ const Table = ({ columns, colspan, data }) => {
 
 export default function UserList(){
     const columns = ["ID", "Password", "Name", "Telephone"]
-    const data = []
+    const [data, setData] = useState([])
     const count = data.length
+
+    useEffect(()=>{
+        axios.get('http://localhost:5000/api/user/user-list')
+        .then(res=>{
+            setData(res.data.users)
+        })
+        .catch(err=>{})
+    },[])
+
     return (<>
 
     <h1>사용자 목록</h1>
@@ -32,6 +51,6 @@ export default function UserList(){
     <div className={tableStyles.td}>
     <Table columns={columns} colspan={4} data={data}/>
     </div>
-        
+    
     </>)
 }

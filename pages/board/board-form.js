@@ -22,9 +22,9 @@ export default function BoardForm(){
     }
 
     return (<>
+        <form action="" onSubmit={handleSubmit}>
         <h1>게시글 등록</h1>
         <div className={style.container}>
-            <htmlForm action="">
             <div className={style.row}>
                 <div className={style.col25}>
                 <label className={style.label} htmlFor="passengerId">게시글 작성자 ID</label>
@@ -66,10 +66,10 @@ export default function BoardForm(){
             </div>
             <br/>
             <div className={style.row}>
-                <input type="submit" onClick={handleSubmit} className={style.inputSubmit}
+                <input type="submit" className={style.inputSubmit}
                 value="Submit"/>
             </div>
-            </htmlForm>
             </div>
+        </form>
     </>)
 }
