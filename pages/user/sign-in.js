@@ -1,9 +1,10 @@
 import React,{useState} from "react"
-import axios from "axios"
+import {Layout} from '../common';
 
 export default function SignIn(){
     const [inputs, setInputs] = useState({})
-
+    const {name, pw} = inputs;
+    
     const handleChange = e => {
         e.preventDefault()
         const { value, name } = e.target
@@ -12,12 +13,8 @@ export default function SignIn(){
 
     const handleSubmit = e => {
         e.preventDefault()
-        alert( `등록할 로그인 정보 :  ${ JSON.stringify(inputs) }` )
-        axios.post("http://localhost:5000/api/user/sign-in", inputs)
-        .then(res => {
-            alert(`결과: ${res.data.result}`)
-        })
-        .catch(err => alert(err))
+        const signinRequest = {name, pw}
+        alert( `등록할 로그인 정보 :  ${ JSON.stringify(signinRequest) }` )
     }
 
      return <>
@@ -36,5 +33,4 @@ export default function SignIn(){
      </form>
      </>
   } 
-
 

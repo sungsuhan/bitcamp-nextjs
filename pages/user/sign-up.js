@@ -1,5 +1,5 @@
 import axios from "axios"
-import React,{useState} from "react"
+import {useState} from "react"
 
 export default function SignUp() {
     const [inputs, setInputs] = useState({})
@@ -12,7 +12,7 @@ export default function SignUp() {
         
     const handleSubmit = e => {
         e.preventDefault()
-        alert( `등록할 가입 정보 :  ${ JSON.stringify(inputs) }` )
+        alert( `등록할 가입정보 :  ${ JSON.stringify(inputs) }` )
         axios.post("http://localhost:5000/api/user/sign-up", inputs)
         .then(res => {
             alert(`결과: ${res.data.result}`)

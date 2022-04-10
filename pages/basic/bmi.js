@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 
 export default function Bmi() {
+    const proxy = "http://localhost:5000"
     const [inputs, setInputs] = useState({})
 
     const handleChange = e => {
@@ -13,7 +14,7 @@ export default function Bmi() {
     const handleSubmit = e => {
         e.preventDefault()
         alert( `등록할 신체 정보 :  ${ JSON.stringify(inputs) }` )
-        axios.post("http://localhost:5000/api/basic/bmi", inputs)
+        axios.post(proxy + "/api/basic/bmi", inputs)
         .then(res => {
             alert(`결과: ${res.data.result}`)
         })

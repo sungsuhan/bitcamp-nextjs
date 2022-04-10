@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect,useState } from "react"
 import tableStyles from "../common/style/table.module.css"
+import Link from 'next/link'
 
 const Table = ({ columns, colspan, data }) => {
 
@@ -8,8 +9,8 @@ const Table = ({ columns, colspan, data }) => {
     <table className={tableStyles.table}>
         <thead>
             <tr className={tableStyles.tr}>
-                {columns.map((column) => (
-                    <th key={column} className={tableStyles.td}>{column}</th>
+                {columns.map((column, index) => (
+                    <th key={index} className={tableStyles.td}>{column}</th>
                 ))}
             </tr>
         </thead>
@@ -19,7 +20,12 @@ const Table = ({ columns, colspan, data }) => {
                                 </tr>
             :data.map((user) => (
             <tr className={tableStyles.tr}  key={user.userId} >
-                <td className={tableStyles.td}>{user.userId}</td>
+                <td className={tableStyles.td}>{user.userId}
+                <Link href={{pathname:`/user/[userId]`,
+                query:{selectedUser: 'test'}}} as={`/user/${user.userId}`}>
+                <a>{user.userId}</a>
+                </Link>
+                </td>
                 <td className={tableStyles.td}>{user.pw}</td>
                 <td className={tableStyles.td}>{user.name}</td>
                 <td className={tableStyles.td}>{user.tel}</td>
