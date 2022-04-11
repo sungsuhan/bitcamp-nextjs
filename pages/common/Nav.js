@@ -13,8 +13,8 @@ export default function Nav(){
         <li className={styles.li}> <Link href='/game/game-list'>GameList</Link> </li>
         <li className={styles.li}> <Link href='/game/team-list'>TeamList</Link> </li>
         <li className={styles.li}> <Link href='/todo/todo-list'>TodoList</Link> </li>
-        <li className={styles.li}> <Link href='/user/sign-in'>Sign In</Link> </li>
-        <li className={styles.li}> <Link href='/user/sign-up'>Sign Up</Link> </li>
+        <li className={styles.li}> <Link href='/user/join'>회원가입</Link> </li>
+        <li className={styles.li}> <Link href='/user/login'>로그인</Link> </li>
         <li className={styles.li}> <Link href='/user/user-list'>User List</Link> </li>
       </ul>
     </nav>

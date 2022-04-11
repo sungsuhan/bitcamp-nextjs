@@ -1,7 +1,7 @@
 import React,{useState} from "react"
 import {Layout} from '../common';
 
-export default function SignIn(){
+export default function Login(){
     const [inputs, setInputs] = useState({})
     const {name, pw} = inputs;
     
@@ -13,8 +13,8 @@ export default function SignIn(){
 
     const handleSubmit = e => {
         e.preventDefault()
-        const signinRequest = {name, pw}
-        alert( `등록할 로그인 정보 :  ${ JSON.stringify(signinRequest) }` )
+        const loginRequest = {name, pw}
+        alert( `등록할 로그인 정보 :  ${ JSON.stringify(loginRequest) }` )
     }
 
      return <>

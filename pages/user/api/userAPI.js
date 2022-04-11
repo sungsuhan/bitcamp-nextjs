@@ -1,5 +1,5 @@
 import axios  from 'axios';
 const SERVER = 'http://localhost:8080'
 
-export const userSignin = signinRequest => axios.post(`${SERVER}/user/sign-in`, signinRequest)
-export const userSignup = signupRequest => axios.post(`${SERVER}/user/sign-up`, signupRequest)
+export const userLogin = loginRequest => axios.post(`${SERVER}/user/login`, loginRequest)
+export const userJoin = joinRequest => axios.post(`${SERVER}/user/join`, joinRequest)

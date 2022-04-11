@@ -1,7 +1,7 @@
 import axios from "axios"
 import {useState} from "react"
 
-export default function SignUp() {
+export default function Join() {
     const [inputs, setInputs] = useState({})
 
     const handleChange = e => {
@@ -13,7 +13,7 @@ export default function SignUp() {
     const handleSubmit = e => {
         e.preventDefault()
         alert( `등록할 가입정보 :  ${ JSON.stringify(inputs) }` )
-        axios.post("http://localhost:5000/api/user/sign-up", inputs)
+        axios.post("http://localhost:5000/api/user/join", inputs)
         .then(res => {
             alert(`결과: ${res.data.result}`)
         })
