@@ -19,16 +19,16 @@ const Table = ({ columns, colspan, data }) => {
                                 <td colSpan={colspan} className={tableStyles.td}>데이터가 없습니다</td>
                                 </tr>
             :data.map((user) => (
-            <tr className={tableStyles.tr}  key={user.userId} >
-                <td className={tableStyles.td}>{user.userId}
-                <Link href={{pathname:`/user/[userId]`,
-                query:{selectedUser: 'test'}}} as={`/user/${user.userId}`}>
-                <a>{user.userId}</a>
+            <tr className={tableStyles.tr}  key={user.username} >
+                <td className={tableStyles.td}>{user.username}
+                <Link href={{pathname:`/user/[username]`,
+                query:{selectedUser: 'test'}}} as={`/user/${user.username}`}>
+                <a>{user.username}</a>
                 </Link>
                 </td>
-                <td className={tableStyles.td}>{user.pw}</td>
+                <td className={tableStyles.td}>{user.password}</td>
                 <td className={tableStyles.td}>{user.name}</td>
-                <td className={tableStyles.td}>{user.tel}</td>
+                <td className={tableStyles.td}>{user.telephone}</td>
             </tr>
             ))}
         </tbody>

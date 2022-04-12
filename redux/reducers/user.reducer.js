@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const UserDataPayload = {
-    userId: String,
-    pw: String,
+    username: String,
+    password: String,
     name: String,
-    tel: String,
+    telephone: String,
 }
 
 const initialState = {
