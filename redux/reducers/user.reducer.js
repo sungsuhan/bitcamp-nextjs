@@ -19,7 +19,8 @@ export const userSlice = createSlice({
     reducers: {
         joinRequest(state, action){state.userLoading = true, state.error = null},
         joinSuccess(state, action){state.userLoading = false, state.error = action.payload},
-        joinFailure(state, action){state.userLoading = false, state.error = action.payload}
+        joinFailure(state, action){state.userLoading = false, state.error = action.payload},
+        loginRequest(state,action){state.userLoading =true, state.error =null}
     }
 })
 

@@ -1,15 +1,12 @@
-import React,{useState} from "react"
-import style from "board/style/board-form.module.css"
+import React,{ useState } from "react"
+import style from "board/styles/board.module.css"
+import { useDispatch } from 'react-redux'
+import { addTitle } from "../../redux/reducers/board.reducer"
 import axios from "axios"
 
-export default function BoardForm(){
-    const [inputs, setInputs] = useState({})
-
-    const handleChange = e => {
-        e.preventDefault()
-        const {value, name} = e.target;
-        setInputs({...inputs, [name]: value})
-    }
+export default function Board(){
+    const [value, setValue] = useState('')
+    const dispatch = useDispatch()
         
     const handleSubmit = e => {
         e.preventDefault()
@@ -22,18 +19,26 @@ export default function BoardForm(){
     }
 
     return (<>
-        <form action="" onSubmit={handleSubmit}>
+        <form onSubmit={ e => {
+            e.preventDefault()
+            alert('value ?' +value)
+            if(value) dispatch(addTitle({title: value}))
+        }}>
         <h1>게시글 등록</h1>
         <div className={style.container}>
             <div className={style.row}>
                 <div className={style.col25}>
-                <label className={style.label} htmlFor="passengerId">게시글 작성자 ID</label>
+                <label className={style.label} htmlFor="passengerId">게시글 제목</label>
                 </div>
                 <div className={style.col75}>
-                <input type="text" onChange={handleChange} className={style.inputText}
-                id="passengerId" name="passengerId" placeholder="게시글 작성자 ID 입력"/>
+                <input type="text" onChange={e => {
+                    e.preventDefault()
+                    setValue(e.target.value)
+                }} className={style.inputText}
+                id="passengerId" name="passengerId" placeholder="게시글 제목 입력"/>
                 </div>
             </div>
+            {/** 
             <div className={style.row}>
                 <div className={style.col25}>
                 <label htmlFor="name">게시글 작성자 이름</label>
@@ -65,6 +70,7 @@ export default function BoardForm(){
                 </div>
             </div>
             <br/>
+            */}
             <div className={style.row}>
                 <input type="submit" className={style.inputSubmit}
                 value="Submit"/>

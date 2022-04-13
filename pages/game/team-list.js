@@ -1,6 +1,6 @@
 import React,{useState} from "react"
 import axios from "axios"
-import style from "game/style/team-list.module.css"
+import style from "game/styles/team-list.module.css"
 
 export default function TeamList(){
     const [inputs, setInputs] = useState({})
