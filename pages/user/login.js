@@ -13,12 +13,12 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import  Link  from "next/link";
 import * as yup from "yup";
-import _ from "@lodash";
+import * as _ from 'lodash'
 // import { LayOut } from "features/common";
 // import "features/common/font/font.scss";
-// import "features/common/styles/image.scss";
-// import "features/user/styles/UserLayout.scss";
-import { loginRequest } from "../../redux/reducers/user.reducer";
+// import "features/common/style/image.scss";
+// import "features/user/style/UserLayout.scss";
+import { loginRequest } from "../../redux/reducers/userReducer.ts";
 import Image from "next/image";
 const Root = styled("div")(({ theme }) => ({
   "& .Login3-leftSection": {},
@@ -33,7 +33,7 @@ const Root = styled("div")(({ theme }) => ({
  * Form Validation Schema
  */
 const schema = yup.object().shape({
-  username: yup.string().required("Username을 입력"),
+  userid: yup.string().required("ID 입력"),
   // email: yup.string().email('You must enter a valid email').required('You must enter a email'),
   password: yup
     .string()
@@ -41,12 +41,12 @@ const schema = yup.object().shape({
     .min(8, "Password 가 너무 짧아요 - 최소8자이상"),
 });
 const defaultValues = {
-  username: "",
+  userid: "",
   password: "",
   name: "",
   telephone: "",
 };
-export default function Login3Page() {
+export default function Login() {
   const dispatch = useDispatch();
   const { control, formState, handleSubmit, reset } = useForm({
     mode: "onChange",
@@ -73,7 +73,6 @@ export default function Login3Page() {
                 animate={{ opacity: 1, transition: { delay: 0.2 } }}
               >
                 <div>
-                  <Image src="/vercel.svg" width="64" height="64" />
                   <div />
                   <div>
                     <span>Login</span>
@@ -89,17 +88,17 @@ export default function Login3Page() {
                 })}
               >
                 <Controller
-                  name="username"
+                  name="userid"
                   control={control}
                   render={({ field }) => (
                     <TextField
                       {...field}
                       className="mb-16"
-                      label="Username"
+                      label="Userid"
                       autoFocus
                       type="text"
-                      error={!!errors.username}
-                      helperText={errors?.username?.message}
+                      error={!!errors.userid}
+                      helperText={errors?.userid?.message}
                       variant="outlined"
                       required
                       fullWidth
@@ -159,7 +158,6 @@ export default function Login3Page() {
                 Log in with KaKao
               </Button>
             </CardContent>
-            <Image src="/vercel.svg" width="64" height="64" />
             <div className="flex flex-col items-center justify-center pb-32">
               <span className="font-normal">회원이 아니신가요?</span>
               &nbsp;&nbsp;

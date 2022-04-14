@@ -19,16 +19,16 @@ const Table = ({ columns, colspan, data }) => {
                                 <td colSpan={colspan} className={tableStyles.td}>데이터가 없습니다</td>
                                 </tr>
             :data.map((user) => (
-            <tr className={tableStyles.tr}  key={user.username} >
-                <td className={tableStyles.td}>{user.username}
-                <Link href={{pathname:`/user/[username]`,
-                query:{selectedUser: 'test'}}} as={`/user/${user.username}`}>
-                <a>{user.username}</a>
+            <tr className={tableStyles.tr}  key={user.userid} >
+                <td className={tableStyles.td}>{user.userid}
+                <Link href={{pathname:`/user/[userid]`,
+                query:{selectedUser: 'test'}}} as={`/user/${user.userid}`}>
+                <a>{user.userid}</a>
                 </Link>
                 </td>
                 <td className={tableStyles.td}>{user.password}</td>
                 <td className={tableStyles.td}>{user.name}</td>
-                <td className={tableStyles.td}>{user.telephone}</td>
+                <td className={tableStyles.td}>{user.phone}</td>
             </tr>
             ))}
         </tbody>
@@ -37,7 +37,7 @@ const Table = ({ columns, colspan, data }) => {
 }
 
 export default function UserList(){
-    const columns = ["ID", "Password", "Name", "Telephone"]
+    const columns = ["ID", "이름", "이메일", "전화번호", "생년월일", "주소"]
     const [data, setData] = useState([])
     const count = data.length
 
@@ -55,7 +55,7 @@ export default function UserList(){
     {count!=0 && <h3>회원수 : {data.length} 명</h3>}
     
     <div className={tableStyles.td}>
-    <Table columns={columns} colspan={4} data={data}/>
+    <Table columns={columns} colspan={6} data={data}/>
     </div>
     
     </>)

@@ -1,19 +1,16 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addTask } from '../../redux/reducers/todo.reducer'
-// import './style/Task.scss'
-
-export default function Todo() {
-  const [value, setValue] = useState('')
-  const dispatch = useDispatch()
-
+import React, {useState} from 'react'
+import { useDispatch } from 'react-redux'
+import { addTask } from '../../redux/reducers/todoReducer.ts'
+export default function AddTodo() {
+    const [value, setValue] = useState('')
+    const dispatch = useDispatch()
   return (
      <div className="todoapp stack-large">
       <h1>스케줄 등록</h1>
-      <form onSubmit={ e =>{
-        e.preventDefault()
-        alert('value ?' +value)
-        if(value) dispatch(addTask({task: value}))
+      <form onSubmit={ e => {
+          e.preventDefault()
+          alert('value ?'+value)
+          if(value) dispatch(addTask({task: value}))
       }}>
 
         <h2 className="label-wrapper">
@@ -21,22 +18,23 @@ export default function Todo() {
             오늘의 일정은?
           </label>
         </h2>
+        
         <input
           type="text"
-          id="todo"
+          id="new-todo-input"
           className="input input__lg"
           name="text"
           autoComplete="off"
-          onChange={e => {
-            e.preventDefault()
-            setValue(e.target.value)}}
-        /><br />
-        <button style={{marginLeft:"65px"}} type="submit" className="btn btn__primary btn__lg">
+          onChange={ e => {
+              e.preventDefault()
+                setValue(e.target.value)
+          }}
+        />
+        <button type="submit" style={{marginLeft:"20px"}}  className="btn btn__primary btn__lg">
           Add
         </button>
       </form>
-      {/** 
-      <div className="filters btn-group stack-exception">
+      {/**<div className="filters btn-group stack-exception">
         <button type="button" className="btn toggle-btn" aria-pressed="true">
           <span className="visually-hidden">Show </span>
           <span>all</span>
