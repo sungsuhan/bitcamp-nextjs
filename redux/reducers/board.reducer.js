@@ -5,14 +5,12 @@ export const boardSlice = createSlice({
     name: 'boards',
     initialState,
     reducers: {
-        addTitle: (state, action) => {
-            alert('리듀서 내부로 들어온 제목은 ?'+action.payload.title)
-            const board = {id: new Date(), title: action.payload.title, completed: false}
-            state.push(board)
+        addBoard: (state, action) => {
+            alert('리듀서 내부로 들어온 제목은 ?'+JSON.stringify(action))
         }
     }
 })
 
-export const { addTitle } = boardSlice.actions
+export const { addBoard } = boardSlice.actions
 
 export default boardSlice.reducer

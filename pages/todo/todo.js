@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTask } from '../../redux/reducers/todo.reducer'
-import axios from "axios"
-
 // import './style/Task.scss'
 
 export default function Todo() {
