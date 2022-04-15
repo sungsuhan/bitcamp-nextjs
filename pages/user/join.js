@@ -12,13 +12,14 @@ import Link from 'next/link';
 import * as yup from 'yup';
 import * as _ from 'lodash'
 import Image from 'next/image'
+import { joinRequest } from '../../redux/reducers/userReducer.ts';
 // import './styles/UserLayout.scss'
 // import "./styles/UserRegister.scss"
 // import { CheckList } from '..';
 
 
 const schema = yup.object().shape({
-  username: yup.string().required('사용자 ID를 입력하시오'),
+  userid: yup.string().required('사용자 ID를 입력하시오'),
   name: yup.string().required('사용자 이름을 입력하시오'),
   email: yup.string().required('이메일을 입력하시오'),
   phone: yup.string().required('전화번호를 입력하시오'),
@@ -27,7 +28,7 @@ const schema = yup.object().shape({
   password: yup
     .string()
     .required('비밀번호를 입력하시오')
-    .min(8, '비밀번호가 너무 짧습니다. 최소 8자 이상 되어야 합니다'),
+    .min(4, '비밀번호가 너무 짧습니다. 최소 4자 이상 되어야 합니다'),
   passwordConfirm: yup.string().oneOf([yup.ref('password'), null], '비밀번호가 일치해야 합니다'),
 
 });
@@ -89,7 +90,8 @@ export default function Join() {
                 <form
                   name="registerForm"
                   noValidate
-                  className="flex flex-col justify-center w-full"                  
+                  className="flex flex-col justify-center w-full"
+                  onSubmit={handleSubmit(async (data) => { await dispatch(joinRequest({...data,}))})}
                 >
                   <Controller
                     name="userid"
@@ -98,7 +100,7 @@ export default function Join() {
                       <TextField
                         {...field}
                         className="mb-16"
-                        label="Name"
+                        label="ID"
                         autoFocus
                         type="userid"
                         error={!!errors.userid}
@@ -114,7 +116,6 @@ export default function Join() {
                   <button onClick={() => dispatch(
                     exist(document.getElementById('email').value))}>중복체크</button>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
 
                   <Controller
                     id='name'
@@ -192,6 +193,7 @@ export default function Join() {
                     )}
                   />
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
                   <Controller
                     name="address"
                     control={control}
@@ -209,6 +211,7 @@ export default function Join() {
                     )}
                   />
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
                   <Controller
                     name="password"
                     control={control}
@@ -227,6 +230,7 @@ export default function Join() {
                     )}
                   />
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
                   <Controller
                     name="passwordConfirm"
                     control={control}
@@ -258,7 +262,6 @@ export default function Join() {
                   </Button>
                 </form>
               </CardContent>
-
 
 
               <div className="flex flex-col items-center justify-center pb-32">

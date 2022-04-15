@@ -20,17 +20,17 @@ export default function AddTodo() {
         </h2>
         
         <input
-          type="text"
-          id="new-todo-input"
+          type="todo"
+          id="todo"
           className="input input__lg"
-          name="text"
+          name="todo"
           autoComplete="off"
           onChange={ e => {
               e.preventDefault()
                 setValue(e.target.value)
           }}
         />
-        <button type="submit" style={{marginLeft:"20px"}}  className="btn btn__primary btn__lg">
+        <button type="submit" style={{marginLeft:"20px"}}  className="btn btn__primary btn__lg" >
           Add
         </button>
       </form>

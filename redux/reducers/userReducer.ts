@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 // parameter
 
 // payload
@@ -36,9 +36,9 @@ const userSlice = createSlice({
     name: 'users',
     initialState,
     reducers: {
-        joinRequest(state: UserState, action){ state.userLoading = true, state.error = null},
-        joinSuccess(state, action){ state.userLoading = false, state.error = action.payload},
-        joinFailure(state, action){ state.userLoading = false, state.error = action.payload}
+        joinRequest(state: UserState, action: PayloadAction<JoinPayload>){ state.userLoading = true; state.error = null},
+        joinSuccess(state: UserState, action: PayloadAction<JoinPayload>){ state.userLoading = false; state.error = action.payload},
+        joinFailure(state: UserState, action: PayloadAction<JoinPayload>){ state.userLoading = false; state.error = action.payload}
     }
 })
 const { reducer, actions } = userSlice

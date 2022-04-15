@@ -6,4 +6,4 @@ const headers = {
     Authorization: "JWT fefege...",
 }
 
-export const joinApi = (data: JoinPayload) => axios.post(`${SERVER}/api/user/signup`,data, { headers})
+export const joinApi = (data: JoinPayload) => axios.post(`${SERVER}/api/user/join`,data, { headers})

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-const initialState = []
+const initialState = ['']
 
 
 export const boardSlice = createSlice({
@@ -8,7 +8,7 @@ export const boardSlice = createSlice({
     initialState,
     reducers: {
         addBoard: (state, action) => {
-            alert('리듀서 내부로 들어온 할일은 ? '+JSON.stringify(action))
+            alert('리듀서 내부로 들어온 게시글은 ? '+JSON.stringify(action))
             // const todo = JSON.stringify(action)
             
         }

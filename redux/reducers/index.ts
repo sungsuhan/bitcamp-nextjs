@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
-import adminReducer from './adminReducer.ts'
-import basicReducer from './basicReducer.ts'
-import boardReducer from './boardReducer.ts'
-import gameReducer from './gameReducer.ts'
-import todoReducer from './todoReducer.ts'
-import userReducer from './userReducer.ts'
+import adminReducer from './adminReducer'
+import basicReducer from './basicReducer'
+import boardReducer from './boardReducer'
+import gameReducer from './gameReducer'
+import todoReducer from './todoReducer'
+import userReducer from './userReducer'
 
 const rootReducer = combineReducers({
     adminReducer,

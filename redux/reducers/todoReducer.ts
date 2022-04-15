@@ -1,16 +1,42 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+// parameter
 
-const initialState = []
-export const todoSlice = createSlice({
+// payload
+export interface JoinPayload{
+    data:{
+        todo: {
+            todo: string;
+        }
+    }
+}
+
+// state
+export interface TodoState{
+    todoLoading: boolean;
+    todoData: any;
+    error: any;
+    token: null;
+}
+
+
+const initialState: TodoState = {
+    todoLoading: false,
+    todoData: null,
+    error: null,
+    token: null
+}
+
+const userSlice = createSlice({
     name: 'todos',
     initialState,
     reducers: {
-        addTask: (state, action) => {
-            alert('리듀서 내부로 들어온 할일은 ? '+action.payload.task)
-            const todo = {id: new Date(), task: action.payload.task, completed: false}
-            state.push(todo)
-        }
+        joinRequest(state: TodoState, action: PayloadAction<JoinPayload>){ state.todoLoading = true; state.error = null},
+        joinSuccess(state: TodoState, action: PayloadAction<JoinPayload>){ state.todoLoading = false; state.error = action.payload},
+        joinFailure(state: TodoState, action: PayloadAction<JoinPayload>){ state.todoLoading = false; state.error = action.payload}
     }
 })
-export const { addTask } = todoSlice.actions
-export default todoSlice.reducer
+const { reducer, actions } = userSlice
+export const {
+    joinRequest, joinSuccess, joinFailure
+} = actions
+export default reducer

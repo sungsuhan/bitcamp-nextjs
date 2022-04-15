@@ -45,9 +45,9 @@ export default function Board(){
                 <div className={style.col75}>
                 <select id="teamId" name="teamId" onChange={handleChange}>
                     <option value="">응원팀 선택</option>
-                    <option value="K09">Fc seoul</option>
-                    <option value="K02">Suwon Samseong blue wings</option>
-                    <option value="K04">Incheon United</option>
+                    <option value="K09">FC 서울</option>
+                    <option value="K02">수원 삼성블루윙즈</option>
+                    <option value="K04">인천 유나이티드</option>
                 </select>
                 </div>
             </div>
