@@ -1,47 +1,66 @@
-import axios from 'axios';
 import React, { useState } from "react";
-
+import tableStyles from '../common/styles/table.module.css'
 export default function Calc() {
-    const proxy = "http://localhost:5000"
     const [inputs, setInputs] = useState({opcode: "+"})
+    const [result, setResult] = useState(``)
+    const { num1, num2, opcode} = inputs
 
-    const handleChange = e => {
+    const onChange = (e) => {
         e.preventDefault()
         const { value, name } = e.target
-        setInputs({...inputs, [name]: value})
-    }
-
-    const handleSubmit = e => {
-        e.preventDefault()
-        alert( `등록할 계산 정보 :  ${ JSON.stringify(inputs) }` )
-        axios.post(proxy + "/api/basic/calc", inputs)
-        .then(res => {
-            alert(`결과: ${res.data.result}`)
+        setInputs({
+            ...inputs,
+            [name]: value
         })
-        .catch(err => alert(err))
     }
 
-return (<div>
-    <form action="" onSubmit={handleSubmit}>
-    <h1>계산기</h1>
+    const onClick = async (e) => {
+        e.preventDefault()
+        switch (opcode){
+            case "+" :
+                return setResult(Number(num1) + Number(num2))
+            case "-" :
+                return setResult(Number(num1) - Number(num2))
+            case "*" :
+                return setResult(Number(num1) * Number(num2))
+            case "/" :
+                return setResult(Number(num1) / Number(num2))
+            case "%" :
+                return setResult(Number(num1) % Number(num2))
+            default :
+                console.log("Default")
+        }
+    }
 
-        <label htmlFor="">숫자1</label>
-        <input name="num1" type="text" onChange={handleChange} /><br />
+    return (<form >
+        <table className={tableStyles.table}>
+            <thead>
+                <tr>
+                    <th><h2>계산기</h2></th>
+                </tr>
+            </thead>
+            <tbody>
+        <tr >
+        <td>
+            <label htmlFor="">num1</label>
+            <input name="num1" type="text" onChange={onChange} /> 
 
-        <label htmlFor="">연산자</label>
-        <select name="opcode" onChange={handleChange} >
-            <option value="+">+</option>
-            <option value="-">-</option>
-            <option value="*">*</option>
-            <option value="/">/</option>
-            <option value="%">%</option>
-        </select><br />
+            <label htmlFor="">연산자</label>
+            <select name="opcode" onChange={onChange} >
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+                <option value="%">%</option>
+            </select>
 
-        <label htmlFor="">숫자2</label>
-        <input name="num2" type="text" onChange={handleChange} /><br />
+            <label htmlFor="">num2</label>
+            <input name="num2" type="text" onChange={onChange} /><br />
 
-        <input type="submit" value="계산" /><br />
-    </form>
-</div>
-)
+            <button onClick={onClick}>계산하기</button></td>
+            </tr>
+            <tr><td>결과 : {result}</td></tr>
+                </tbody>
+            </table>
+        </form>)
 }

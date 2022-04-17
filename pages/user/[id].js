@@ -25,7 +25,7 @@ export default function Profile({id}){
     <h1>사용자 프로필</h1>
     <div>
     <label><b>사용자 ID</b></label>
-    <input type="text" name='username' value= {router.query.id} /><br />
+    <input type="text" name='userid' value= {router.query.id} /><br />
 
     <label htmlFor=""><b>비밀번호</b></label>
     <input type="text" name='password'value={user.password}/><br />
@@ -34,7 +34,7 @@ export default function Profile({id}){
     <input type="text" name='name' value={user.name}/><br />
 
     <label><b>전화번호</b></label>
-    <input type="text" name='telephone' value={user.telephone}/><br />
+    <input type="text" name='phone' value={user.phone}/><br />
 
     <br />
     </div>

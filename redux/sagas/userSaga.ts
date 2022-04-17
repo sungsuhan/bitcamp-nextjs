@@ -1,4 +1,3 @@
-import { yellow } from '@mui/material/colors';
 import { PayloadAction } from '@reduxjs/toolkit'
 import { call, delay, put, takeLatest } from 'redux-saga/effects'
 import { userActions } from '../../redux/reducers/userReducer';
@@ -21,11 +20,11 @@ interface UserJoinSuccessType{
 function* join(user: UserJoinType){
     try{
         alert(' 진행 3: saga내부 join 성공  '+ JSON.stringify(user))
-        const response: UserJoinSuccessType = yield postUser(user.payload)
+        const response : UserJoinSuccessType = yield postUser(user.payload)
         yield put(userActions.joinSuccess(response))
     }catch(error){
-        alert('진행 3: saga내부 join 실패  ') 
-        yield put(userActions.joinFailure(error))
+         alert('진행 3: saga내부 join 실패  ') 
+         yield put(userActions.joinFailure(error))
     }
 }
 export function* watchJoin(){

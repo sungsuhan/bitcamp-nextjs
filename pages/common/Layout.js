@@ -2,14 +2,10 @@ import style from "./styles/Layout.module.css";
 import Nav from "./Nav";
 import Footer from "./Footer";
 export default function Layout({ children }){
-  return (
-    <>
-    <Nav/>
-      <div className={style.container}>
+  return (<div className={style.container}>
+        <Nav/>
         <main className={style.main}>{children}</main>
+        <Footer/>
       </div>
-      <Footer/>
-    </>
   );
-};
-
+}
