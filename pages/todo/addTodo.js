@@ -5,8 +5,9 @@ import tableStyles from '../common/styles/table.module.css'
 
 export default function AddTodo() {
     const [todo, setTodo] = useState({
-      task:''
+      userid:'', task:'', completed:''
     })
+    const [data, setData] = useState([])
     const dispatch = useDispatch()
 
     const handleChange = e =>{
@@ -17,12 +18,12 @@ export default function AddTodo() {
 
 
   return (
-      <form onSubmit={ e => {
+      <form onSubmit= { e => {
           e.preventDefault()
           alert(' 진행 1: Add 클릭 ');
           dispatch(todoActions.todoRequest(todo))
           setTodo({
-              todo:''
+              userid:'', task:'', completed:''
           })
       }}>
         <table className={tableStyles.table}>

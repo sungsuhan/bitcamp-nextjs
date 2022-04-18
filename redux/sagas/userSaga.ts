@@ -1,4 +1,3 @@
-import { PayloadAction } from '@reduxjs/toolkit'
 import { call, delay, put, takeLatest } from 'redux-saga/effects'
 import { userActions } from '../../redux/reducers/userReducer';
 import { postUser } from '../api/userApi'
@@ -6,8 +5,8 @@ import { postUser } from '../api/userApi'
 interface UserJoinType{
     type: string;
     payload: {
-        userid:string, password:string, email:string, 
-        name:string, phone:string, birth:string, address:string
+        userid:string; password:string; email:string; 
+        name:string; phone:string; birth:string; address:string;
     }
 }
 interface UserJoinSuccessType{
