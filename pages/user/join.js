@@ -7,22 +7,24 @@ export default function  Join(){
         userid:'', password:'', email:'', name:'', phone:'', birth:'', address:''
     })
     const dispatch = useDispatch()
-    
     const handleChange = e =>{
         e.preventDefault()
         const{name, value} = e.target;
         setUser({...user,[name]: value})
     }
-
-    return (
-        <form onSubmit={ e => {
+    const hendleClick = e => {
+        window.location.href = "./login"
+    }
+    return <form onSubmit={
+        e => {
             e.preventDefault()
-            alert(' 진행 1: 회원가입 클릭 ');
             dispatch(userActions.joinRequest(user))
             setUser({
                 userid:'', password:'', email:'', name:'', phone:'', birth:'', address:''
             })
-        }}>
+        }
+    }
+    >
         <table className={tableStyles.table}>
             <thead>
                 <tr>
@@ -62,10 +64,9 @@ export default function  Join(){
                     <td><input type="text" name='address' onChange={handleChange}/></td>
                 </tr>
                 <tr>
-                    <td colSpan={2}><button type="submit">회원가입</button><br /></td>
+                    <td colSpan={2}><button type="submit" onClick={hendleClick}>회원가입</button><br /></td>
                 </tr>
             </tbody>
         </table>
     </form>
-    );
 }

@@ -1,29 +1,23 @@
 import React, {useState} from 'react'
 import { useDispatch } from 'react-redux'
 import tableStyles from '../common/styles/table.module.css'
-
-
+import { todoActions } from '../../redux/reducers/todoReducer.ts'
 export default function AddTodo() {
-    const [todo, setTodo] = useState({
-      userid:'', task:'', completed:''
-    })
+    const [todo, setTodo] = useState({ task:''})
     const [data, setData] = useState([])
     const dispatch = useDispatch()
-
     const handleChange = e =>{
       e.preventDefault()
       const{name, value} = e.target;
-      setTodo({...todo,[name]: value})
+      setTodo({...todo, [name]: value})
     }
-
-
   return (
-      <form onSubmit= { e => {
+      <form onSubmit={ e => {
           e.preventDefault()
-          alert(' 진행 1: Add 클릭 ');
-          dispatch(todoActions.todoRequest(todo))
+          alert(JSON.stringify(todo))
+          dispatch(todoActions.addTodoRequest(todo))
           setTodo({
-              userid:'', task:'', completed:''
+             task: ''
           })
       }}>
         <table className={tableStyles.table}>
@@ -48,21 +42,7 @@ export default function AddTodo() {
           Add
         </button></td >
             </tr>
-            <tr>
-              <td>
-                할일목록
-              </td>
-              <td>
-                {data.length == 0 ? 
-                <div>현재 등록된 일정이 없습니다</div>
-               
-                :data.map((todo) => (
-                    <div key={todo.context}>
-                        <div key={todo.context}></div>
-                    </div>
-                ))}
-              </td>
-            </tr>
+            
                 </tbody>
             </table>
             </form>

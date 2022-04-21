@@ -1,43 +1,75 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 export interface TodoType{
-    userid: string;
+   
     task: string;  
-    completed: string; // value = T or F
+   
 }
-
 export interface TodoState{
-    loading: boolean;
-    data: TodoType[];
-    error: any;
+    loading: boolean
+    data: TodoType[]
+    error: any
 }
-
 
 const initialState: TodoState = {
     loading: false,
     data: [],
-    error: null
+    error: null,
 }
+
 
 const todoSlice = createSlice({
     name: 'todos',
     initialState,
     reducers: {
-        joinRequest(state: TodoState, payload){
-            alert('진행 2: 리듀서 내부 ') 
-            state.loading = true; 
-        },
-        joinSuccess(state: TodoState, {payload}){ 
-            state.data = [...state.data, payload]
-            state.loading = false;
+        addTodoRequest : (state: TodoState, payload) =>{
+            alert('2:리듀서 내부')
+            state.loading = true;
             
         },
-        joinFailure(state: TodoState, {payload}){ 
-            state.data = payload;
+        addTodoSuccess (state: TodoState, {payload}){
+            state.data = [...state.data, payload]
             state.loading = false;
+        },
+        addTodoFailure (state: TodoState, {payload}){
+            state.data = payload;
+            state.loading
+        },
+        getTodoRequest (state: TodoState, payload) {
+            state.loading = true;
+        },
+        getTodoSuccess (state: TodoState, {payload}){
+            state.data = [...state.data, payload]
+            state.loading = false;
+        },
+        getTodoFailure (state: TodoState, {payload}){
+            state.data = payload;
+            state.loading
+        },
+        modifyTodoRequest (state: TodoState, payload) {
+            state.loading = true;
+        },
+        modifyTodoSuccess (state: TodoState, {payload}){
+            state.data = [...state.data, payload]
+            state.loading = false;
+        },
+        modifyTodoFailure (state: TodoState, {payload}){
+            state.data = payload;
+            state.loading
+        },
+        removeTodoRequest (state: TodoState, payload) {
+            state.loading = true;
+        },
+        removeTodoSuccess (state: TodoState, {payload}){
+            state.data = [...state.data, payload]
+            state.loading = false;
+        },
+        removeTodoFailure (state: TodoState, {payload}){
+            state.data = payload;
+            state.loading
         }
     }
 })
-const { reducer, actions } = todoSlice
+const {reducer, actions} = todoSlice
 export const todoActions = actions
 export default reducer

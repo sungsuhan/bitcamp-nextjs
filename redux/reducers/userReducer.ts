@@ -33,10 +33,21 @@ const userSlice = createSlice({
         },
         joinSuccess(state: UserState, {payload}){ 
             state.data = [...state.data, payload]
-            state.loading = false;
-            
+            state.loading = false;           
         },
         joinFailure(state: UserState, {payload}){ 
+            state.data = payload;
+            state.loading = false;
+        },
+        loginRequest(state: UserState, payload){
+            alert('진행 2: 로그인 리듀서 내부 ') 
+            state.loading = true; 
+        },
+        loginSuccess(state: UserState, {payload}){ 
+            state.data = [...state.data, payload]
+            state.loading = false;
+        },
+        loginFailure(state: UserState, {payload}){ 
             state.data = payload;
             state.loading = false;
         }
@@ -45,3 +56,4 @@ const userSlice = createSlice({
 const { reducer, actions } = userSlice
 export const userActions = actions
 export default reducer
+
