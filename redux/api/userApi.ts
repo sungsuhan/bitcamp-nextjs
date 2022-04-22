@@ -26,8 +26,8 @@ export const joinApi = async (payload:
             return err;
          }
     }
-export const loginApi = async (payload: 
-    {userid:string, password:string}) => {
+export const loginApi = async (
+    payload: {userid:string, password:string}) => {
         try{
         const response : AxiosResponse<unknown, UserType[]> = 
         await axios.post(`${SERVER}/user/login`,payload, {headers})
@@ -36,6 +36,6 @@ export const loginApi = async (payload:
         localStorage.setItem("loginUser",loginUser)
         return response.data
         }catch(err){
-        return err;
+            return err;
         }
 }
