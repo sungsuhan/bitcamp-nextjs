@@ -13,7 +13,7 @@ export default function GetUser(){
         setData(res.data.users)
       }).catch(err=>{})
     },[])
-    return (
+    return (<>
       <table className={tableStyles.table}>
         <thead>
             <tr>
@@ -48,5 +48,6 @@ export default function GetUser(){
             
         </tbody>
       </table>
+      </>
     );
 }
